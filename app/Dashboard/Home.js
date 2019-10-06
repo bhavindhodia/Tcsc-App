@@ -135,7 +135,7 @@ class HomeScreenS extends Component {
                                 icon: 'menu', color: '#fff', size: 35, style: { top: -10 },
                                 onPress: () => this.props.navigation.openDrawer()
                             }}
-                            centerComponent={{ text: 'TCSC APP', style: [dashstyles.titletxt, { color: '#fff', fontSize: 35, fontWeight: '800', top: -10 }] }}
+                            centerComponent={{ text: 'TCSC APP 23', style: [dashstyles.titletxt, { color: '#fff', fontSize: 35, fontWeight: '800', top: -10 }] }}
                             containerStyle={{ borderBottomColor: 'transperent' }}
                             rightComponent={<Icon
                                 type='antdesign'
