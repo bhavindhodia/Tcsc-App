@@ -1,0 +1,7 @@
+react-navigation
+react-native-reanimated
+react-native-gesture-handler
+react-native-elements
+react-native-vector-icons
+formik
+yup
