@@ -117,6 +117,7 @@ class ListAttandanceScreen extends Component {
 			isLoading: false,
 			total: json.length
 		})
+		console.warn("Details ", json);
 
 	}
 
