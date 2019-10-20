@@ -57,7 +57,7 @@ class CreateTimingScreen extends Component {
 
 
         if (this.state.startTime !== null && this.state.endTime !== null) {
-            const urls = global.Foo + 'timing/'
+            const urls = global.Foo + 'create/'
             const method = "POST"
             const headers = {
                 'Accept': 'application/json',

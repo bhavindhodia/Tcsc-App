@@ -58,7 +58,7 @@ export default class TimingBase extends Component {
     _onHandelSubmit = async () => {
 
 
-        const urls = global.Foo + 'timing/'
+        const urls = global.Foo + 'create/'
         const method = "POST"
         const headers = {
             'Accept': 'application/json',

@@ -55,7 +55,7 @@ class ActivateStudentScreen extends Component {
 
 
     studentList = async () => {
-        const urls = global.Foo + 'attandance/' + this.state.theDivision
+        const urls = global.Foo + 'attandance/class/' + this.state.theDivision
         // console.warn("URL", urls);
         // console.warn("TOKEn", this.state.teacherToken);
         const method = "GET"
@@ -90,7 +90,7 @@ class ActivateStudentScreen extends Component {
         this.setState({
             isSubmiting: true
         })
-        const urls = global.Foo + 'activate/' + userData.username.id + '/'
+        const urls = global.Foo + 'attendance/activate/' + userData.username.id + '/'
         // console.warn("URL", urls);
 
         const method = "PATCH"

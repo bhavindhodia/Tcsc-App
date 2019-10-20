@@ -30,7 +30,7 @@ class SignUpForm extends React.Component {
         try {
             // console.warn("Values", values)
             // console.warn("Values . ", values.username)
-            const urls = global.Foo + "register/"
+            const urls = global.Foo + "user/create/"
 
 
             const response = await fetch(urls, {

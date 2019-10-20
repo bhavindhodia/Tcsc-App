@@ -80,7 +80,7 @@ class DeptNotice extends Component {
         console.log(this.state.mainData)
         this.props.navigation.navigate('DeptNoticeForm', {
             userDept: this.state.mainData.department,
-            postURL: "upload/departmental/"
+            postURL: "notice/upload/departmental/"
         })
     }
 
@@ -88,7 +88,7 @@ class DeptNotice extends Component {
     _getNotice = async () => {
         try {
             console.log("Departmental Notice Collecting from server")
-            const urls = global.Foo + "upload/departmental/"
+            const urls = global.Foo + "notice/upload/departmental/"
             const method = "GET"
             const bvn = this.state.theToken
             console.log("THe token", bvn)
@@ -173,7 +173,7 @@ class DeptNotice extends Component {
                     noticeData: item,
                     userToken: this.state.theToken,
                     mainData: this.state.mainData,
-                    updateURL: 'update/departmental/'
+                    updateURL: 'notice/update/departmental/'
                 })}
             />
         )

@@ -83,7 +83,7 @@ class AuthLoadingScreen extends React.Component {
         }
         try {
             const urls = global.Foo + "rest-auth/user/"
-            const urls2 = global.Foo + "register/profile_details/"
+            const urls2 = global.Foo + "userprofile/create"
 
 
             const method = "GET"

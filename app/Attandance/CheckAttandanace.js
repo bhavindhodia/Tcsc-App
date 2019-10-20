@@ -29,7 +29,8 @@ class CheckAttandanceScreen extends Component {
     }
 
     fetchAttandance = async () => {
-        const urls = global.Foo + 'check/attandance/' + this.state.studentProfile.roll_no + '/'
+        const urls = global.Foo + 'attendance/check/' + this.state.studentProfile.roll_no + '/'
+        console.warn('urk', urls);
 
 
         const method = "GET"
@@ -45,11 +46,6 @@ class CheckAttandanceScreen extends Component {
 
 
         const json = await response.json()
-        // console.warn("REPS", json);
-        // this.setState({
-        //     attandanceData: json,
-        //     isLoading: false
-        // })
 
         const x = []
         const y = []
@@ -161,41 +157,7 @@ class CheckAttandanceScreen extends Component {
                             </View>
 
                         </Card>
-                        {/* <ScrollView>
-                            <View style={{ paddingBottom: 50 }} >
-                                {
-                                    this.state.attandanceData.map((item, i) => (
 
-                                        <ListItem
-                                            key={i}
-                                            title={item.attandance_date}
-                                            // titleProps={new Date()}
-
-                                            titleStyle={item.status === true ? { color: 'green', fontFamily: 'TisaWeb W03 Bold', fontSize: 20 } : { color: 'red', fontFamily: 'TisaWeb W03 Bold', fontSize: 20 }}
-
-                                            subtitle={item.attandance_s_time + ' -- ' + item.attandance_e_time}
-                                            subtitleStyle={[styles.subtitletxt, { fontSize: 15 }]}
-
-
-                                            bottomDivider
-
-                                            rightIcon={
-                                                <Icon
-                                                    type="entypo"
-                                                    name={item.status === true ? "check" : 'cross'}
-                                                    color={item.status === true ? "green" : 'red'}
-                                                />
-
-                                            }
-
-                                        />
-
-
-
-                                    ))
-                                }
-                            </View>
-                        </ScrollView> */}
 
                         <FlatList
                             keyExtractor={this.keyExtractor}

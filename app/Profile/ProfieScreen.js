@@ -67,21 +67,23 @@ class ProfileScreen extends Component {
         this.setState({ selectedOption2: selectedOption })
     }
 
+
+
     _onHandelSubmit = async () => {
 
         try {
-            console.warn("Values", this.state.stream)
+            // console.warn("Values", this.state.stream)
 
-            const urls = global.Foo + "register/profile_details/"
-            console.warn(urls)
-            const res = await fetch(urls)
+            const urls = global.Foo + "userprofile/create/"
+            // console.warn(urls)
+
             const theprofile = new FormData();
             theprofile.append('stream', this.state.stream)
             theprofile.append('classes', this.state.classes)
             theprofile.append('division', this.state.division)
             theprofile.append('roll_no', this.state.rollno)
-            console.warn(theprofile)
-            await fetch(urls, {
+            // console.warn(theprofile)
+            const response = await fetch(urls, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -91,31 +93,44 @@ class ProfileScreen extends Component {
                 body: theprofile
 
             })
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    AsyncStorage.setItem('profileData', JSON.stringify(responseJson))
-                    Alert.alert(
-                        'Success',
-                        'Profile Detail Submittedt ',
-                        [
-                            { text: 'Done', onPress: () => this.props.navigation.navigate('HomeS') },
 
-                        ],
-                        { cancelable: true },
-                    );
 
-                    // console.warn(responseJson);
-                    //  this.props.navigation.navigate('Login')
-                })
-                .catch((error) => {
-                    console.warn(error);
-                });
+            if (response.status === 201 || response.status === 200) {
+                const responseJson = await response.json()
+                await AsyncStorage.setItem('profileData', JSON.stringify(responseJson))
+
+                Alert.alert(
+                    'Success',
+                    'Profile Detail Submitted ',
+                    [
+                        { text: 'Done', onPress: () => this.props.navigation.navigate('HS') },
+
+                    ],
+                    { cancelable: true },
+                );
+            }
+            else {
+                Alert.alert(
+                    'Error',
+                    'Failed ... Try  resubmiting',
+                    [
+                        { text: 'Done', onPress: () => this.props.navigation.navigate('HomeS') },
+
+                    ],
+                    { cancelable: true },
+                );
+            }
+
+
+
+
         }
         catch (error) {
             console.warn(error)
         }
 
     }
+
 
 
     render() {

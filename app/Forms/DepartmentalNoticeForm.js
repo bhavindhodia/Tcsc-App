@@ -74,11 +74,11 @@ class DepartmentalNoticeForm extends React.Component {
 
                 });
             }
-            console.log("THE BODY = ", thebody)
+            // console.log("THE BODY = ", thebody)
 
             const urls = global.Foo + this.props.navigation.state.params.postURL
-            console.log("URLS =>", urls)
-            console.log("thebody =>", thebody)
+            // console.log("URLS =>", urls)
+            // console.log("thebody =>", thebody)
 
             const method = "POST"
             const headers = {

@@ -5,7 +5,7 @@ import {
 	StyleSheet, Alert
 } from "react-native";
 
-import { Card, Button, Icon, Text, } from 'react-native-elements'
+import { Card, Button, Text, } from 'react-native-elements'
 import DateTimePicker from "react-native-modal-datetime-picker";
 import styles from './attstyles'
 import CustomCheckBox from '../comps/CustomCB'
@@ -93,8 +93,8 @@ class ListAttandanceScreen extends Component {
 	};
 
 	studentList = async () => {
-		const urls = global.Foo + 'attandance/' + this.state.theDivision
-		// console.warn("URL", urls);
+		const urls = global.Foo + 'attendance/class/' + this.state.theDivision
+		console.warn("URL", urls);
 		// console.warn("TOKEn", this.state.teacherToken);
 		const method = "GET"
 		const headers = {
@@ -138,7 +138,7 @@ class ListAttandanceScreen extends Component {
 		else {
 
 
-			const urls = global.Foo + 'create/attandance/'
+			const urls = global.Foo + 'attendance/create/'
 
 
 			const method = "POST"

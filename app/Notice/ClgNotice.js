@@ -68,7 +68,7 @@ class ClgNotice extends Component {
         console.log(this.state.mainData)
         this.props.navigation.navigate('DeptNoticeForm', {
             userDept: 'CLG',
-            postURL: 'upload/college/',
+            postURL: 'notice/upload/college/',
 
         })
     }
@@ -77,7 +77,7 @@ class ClgNotice extends Component {
     _getNotice = async () => {
         try {
             console.log("College Notice Collecting from server")
-            const urls = global.Foo + "upload/college/"
+            const urls = global.Foo + "notice/upload/college/"
             const method = "GET"
             const bvn = this.state.theToken
             console.log("THe token", bvn)
@@ -158,7 +158,7 @@ class ClgNotice extends Component {
                     noticeData: item,
                     userToken: this.state.theToken,
                     mainData: this.state.mainData,
-                    updateURL: 'update/college/'
+                    updateURL: 'notice/update/college/'
                 })}
             />
         )
