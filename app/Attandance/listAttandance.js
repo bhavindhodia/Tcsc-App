@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import {
 	View, ActivityIndicator,
-	StyleSheet, Alert
+	Alert
 } from "react-native";
 
 import { Card, Button, Text, } from 'react-native-elements'
@@ -22,6 +22,7 @@ class ListAttandanceScreen extends Component {
 			theDivision: this.props.navigation.getParam('attandanceDiv'),
 			checked: false,
 			total: null,
+
 			startDateTimePickerVisible: false,
 			endDateTimePickerVisible: false,
 

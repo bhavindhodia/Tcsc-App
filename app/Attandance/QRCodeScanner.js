@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import {
     View, Dimensions, StatusBar,
-    Text, TouchableOpacity, LayoutAnimation,
+    LayoutAnimation,
     StyleSheet
 } from "react-native";
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import { Button, Text, } from 'react-native-elements'
+import DateTimePicker from "react-native-modal-datetime-picker";
 
 class QRCodeScannerScreen extends Component {
     constructor(props) {
@@ -12,7 +14,12 @@ class QRCodeScannerScreen extends Component {
 
         StatusBar.setHidden(true, 'slide');
         this.state = {
-            lastScannedUrl: null
+            lastScannedUrl: null,
+
+            startDateTimePickerVisible: false,
+            endDateTimePickerVisible: false,
+            startTime: null,
+            endTime: null
         }
     }
 
@@ -25,7 +32,65 @@ class QRCodeScannerScreen extends Component {
 
     }
 
+    showStartDateTimePicker = async () =>
+        this.setState({ startDateTimePickerVisible: true });
 
+    showEndDateTimePicker = () => this.setState({ endDateTimePickerVisible: true });
+
+    hideStartDateTimePicker = async () =>
+        this.setState({ startDateTimePickerVisible: false });
+
+    hideEndDateTimePicker = () =>
+        this.setState({ endDateTimePickerVisible: false });
+
+    handleStartDatePicked = async (date) => {
+        s = new Date(date)
+
+        const thedate = s.toLocaleTimeString('en-us')
+        // const thedate = moment(date).format('LT')
+
+        this.setState({ startTime: thedate })
+        const startTime = "attandance_s_time"
+
+        this.state.studentListData.map((item, i) => {
+            const outputArr = this.state.studentListData.slice(0);
+
+            item[startTime] = this.state.startTime
+
+
+            outputArr[i] = item
+            this.setState({
+                studentListData: outputArr,
+            });
+        })
+
+        this.hideStartDateTimePicker();
+    };
+
+    handleEndDatePicked = date => {
+        s = new Date(date)
+        // const thedate = moment(date).format('LT')
+        const thedate = s.toLocaleTimeString('en-us')
+        // console.warn("A time has been picked: ", thedate);
+        this.setState({ endTime: thedate })
+
+        const endTime = "attandance_e_time"
+
+        this.state.studentListData.map((item, i) => {
+            const outputArr = this.state.studentListData.slice(0);
+
+            item[endTime] = this.state.endTime
+
+
+            outputArr[i] = item
+            this.setState({
+                studentListData: outputArr,
+            });
+        })
+
+
+        this.hideEndDateTimePicker();
+    };
 
     render() {
 
@@ -52,7 +117,7 @@ class QRCodeScannerScreen extends Component {
         );
     }
     _maybeRenderUrl = () => {
-        // console.warn('errrrr2', this.state.lastScannedUrl)
+
         if (this.state.lastScannedUrl === null) {
 
             return
@@ -90,7 +155,42 @@ class QRCodeScannerScreen extends Component {
 
                 <View style={styles.topBar} >
 
-                    <Text style={styles.urlText} >TOP{this.state.lastScannedUrl.username}</Text>
+                    <Button
+                        containerStyle={styles.ctnbtn}
+                        buttonStyle={styles.btn}
+                        type="outline"
+                        titleStyle={[styles.titletxt, { color: '#9522c9', fontSize: 20 }]}
+                        title={this.state.startTime === null ? "Start Time" : this.state.startTime} onPress={this.showStartDateTimePicker} />
+
+
+                    <DateTimePicker
+                        mode='time'
+                        isVisible={this.state.startDateTimePickerVisible}
+                        onConfirm={this.handleStartDatePicked}
+                        onCancel={this.hideStartDateTimePicker}
+                    />
+
+                    <Button containerStyle={styles.ctnbtn}
+                        buttonStyle={styles.btn}
+                        type="outline"
+                        titleStyle={[styles.titletxt, { color: '#9522c9', fontSize: 20 }]}
+                        title={this.state.endTime === null ? "End Time" : this.state.endTime} onPress={this.showEndDateTimePicker}
+
+                    />
+
+
+
+                    <DateTimePicker
+                        mode='time'
+                        isVisible={this.state.endDateTimePickerVisible}
+                        onConfirm={this.handleEndDatePicked}
+                        onCancel={this.hideEndDateTimePicker}
+                    />
+
+
+
+
+
 
                 </View>
 
