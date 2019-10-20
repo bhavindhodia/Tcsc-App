@@ -20,7 +20,7 @@ import { ScrollView, Dimensions } from "react-native";
 
 const width = Math.round(Dimensions.get('window').width);
 
-console.disableYellowBox = false
+console.disableYellowBox = true
 
 //**********************************//
 // COMMON NOTICE TABS
